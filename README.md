@@ -1,82 +1,122 @@
-# 🛡️ MistralGuard Enhanced
+# 🛡️ MistralGuard
 
-MistralGuard Enhanced is a comprehensive anomaly detection and explanation system powered by **Mistral-7B** (via Ollama) and **Explainable AI (XAI)** principles. It combines traditional statistical methods, business rules, and machine learning (Isolation Forest) to detect anomalies in financial or transactional data, and then uses a Large Language Model to explain *why* those anomalies are significant.
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![Gradio](https://img.shields.io/badge/Gradio-5.0%2B-orange?style=for-the-badge&logo=gradio&logoColor=white)](https://gradio.app/)
+[![Ollama](https://img.shields.io/badge/Ollama-Mistral%207B-black?style=for-the-badge&logo=ollama&logoColor=white)](https://ollama.ai/)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-## ✨ Features
+**MistralGuard** is a next-generation anomaly detection and explanation system that bridges the gap between traditional statistical monitoring and modern Generative AI. 
 
--   **Multi-Layer Detection**:
-    -   **Statistical**: Z-Score analysis for outlier detection.
-    -   **Business Rules**: Checks for negative amounts, extreme values, etc.
-    -   **Data Quality**: Identifies missing or suspicious categories.
-    -   **Machine Learning**: Uses **Isolation Forest** for multivariate anomaly detection.
--   **Explainable AI (XAI)**:
-    -   Uses **Mistral-7B** to provide structured analysis (Reasoning, Impact, Recommendation).
-    -   **Chat with Data**: Ask questions about the detected anomalies in natural language.
-    -   Risk Scoring (1-10) for prioritization.
--   **Interactive Dashboard**:
-    -   Visualizations using **Plotly** (Risk Distribution, Anomaly Types, **Time Series Analysis**).
-    -   Detailed breakdown of each anomaly.
--   **Configuration**:
-    -   Adjustable sensitivity thresholds.
-    -   Toggle ML components.
+Powered by **Mistral-7B** (via Ollama) and **Explainable AI (XAI)** principles, it not only detects *when* something goes wrong but explains *why*—in plain English.
+
+🔗 **GitHub Repository**: [https://github.com/arya251223/MistralGuard](https://github.com/arya251223/MistralGuard)
+
+---
+
+## ✨ Key Features
+
+### 🧠 Intelligent Detection
+MistralGuard employs a multi-layered approach to ensure no anomaly goes unnoticed:
+-   **Statistical Analysis**: Real-time Z-Score calculation for outlier detection.
+-   **Business Logic**: Configurable rules to catch domain-specific errors (e.g., negative transactions, extreme values).
+-   **Data Quality Checks**: Identifies missing data, nulls, or suspicious categories.
+-   **Machine Learning**: Integrated **Isolation Forest** algorithm for detecting complex, multivariate anomalies.
+
+### 🗣️ Explainable AI (XAI)
+Don't just get an alert; get an explanation.
+-   **Natural Language Insights**: Uses Mistral-7B to generate structured reports (Reasoning, Impact, Recommendation).
+-   **Chat with Data**: Interactive chat interface to ask follow-up questions about specific anomalies.
+-   **Risk Scoring**: AI-assigned risk scores (1-10) to help prioritize your response.
+
+### 📊 Interactive Dashboard
+Built with **Gradio** and **Plotly** for a seamless user experience:
+-   **Real-time Visualizations**: Risk distribution histograms, anomaly type pie charts, and interactive time-series plots.
+-   **Data View**: Inspect the raw data and identified anomalies directly in the browser.
+-   **Exportable Reports**: Download comprehensive CSV reports with AI insights included.
+
+---
+
+## 🛠️ Tech Stack
+
+-   **Core**: Python 3.12+
+-   **AI/LLM**: Ollama (Mistral-7B Instruct)
+-   **Frontend**: Gradio (Soft Theme)
+-   **Data Processing**: Pandas, NumPy
+-   **Machine Learning**: Scikit-learn (Isolation Forest)
+-   **Visualization**: Plotly Express
+
+---
 
 ## 🚀 Installation
 
-1.  **Prerequisites**:
-    -   Python 3.8+
-    -   [Ollama](https://ollama.ai/) installed and running.
+### 1. Prerequisites
+-   **Python 3.8+** installed.
+-   **[Ollama](https://ollama.ai/)** installed and running.
 
-2.  **Install Dependencies**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+### 2. Clone the Repository
+```bash
+git clone https://github.com/arya251223/MistralGuard.git
+cd MistralGuard
+```
 
-3.  **Setup Ollama**:
-    Pull the Mistral model:
-    ```bash
-    ollama pull mistral:7b-instruct
-    ```
-    Start the Ollama server:
-    ```bash
-    ollama serve
-    ```
+### 3. Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 4. Setup AI Model
+Pull the Mistral model (or any other supported model):
+```bash
+ollama pull mistral:7b-instruct
+```
+*Ensure the Ollama server is running (`ollama serve`).*
+
+---
 
 ## 🏃 Usage
 
-### Enhanced Version (Web UI)
-Run the full-featured application with dashboard and chat:
+### 🌟 Enhanced Version (Recommended)
+Launch the full web application with the interactive dashboard:
 ```bash
 python app.py
 ```
-Open your browser at `http://127.0.0.1:7860`.
+> Open your browser at `http://127.0.0.1:7860`
 
-### Basic Version (CLI)
-Run the lightweight command-line version:
+### ⚡ Basic Version (CLI)
+For quick, headless checks via command line:
 ```bash
 python mistralguard.py
 ```
 
+---
+
 ## 📂 Project Structure
 
--   `app.py`: **Enhanced Version** (Web UI). Main Gradio application entry point.
--   `src/`:
-    -   `detector.py`: Core logic for anomaly detection (Statistical, Rules, ML).
-    -   `explainer.py`: Interface with Ollama for generating explanations.
-    -   `utils.py`: Helper functions for reporting and file handling.
--   `mistralguard.py`: **Basic Version** (CLI). Simple command-line interface for quick checks.
+```
+MistralGuard/
+├── app.py                 # 🌟 Main Web Application (Gradio)
+├── mistralguard.py        # ⚡ Basic CLI Version
+├── requirements.txt       # Project Dependencies
+├── README.md              # Documentation
+└── src/
+    ├── detector.py        # Anomaly Detection Logic (Stats, ML, Rules)
+    ├── explainer.py       # LLM Integration & Prompt Engineering
+    └── utils.py           # Reporting & Helper Functions
+```
 
-## 🤖 How it Works
+## � Contributing
 
-1.  **Upload**: User uploads a CSV file (e.g., transaction logs).
-2.  **Detect**: The system scans for anomalies using configured methods.
-3.  **Explain**: Detected anomalies are sent to the local LLM to generate a human-readable explanation and risk assessment.
-4.  **Visualize**: Results are presented in an interactive dashboard.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📊 Visualizations
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
 
--   **Risk Distribution**: Shows the distribution of risk scores for anomalies.
--   **Anomaly Types**: Breakdown of different types of anomalies detected.
--   **Time Series Analysis**: Visualizes anomalies over time.
+## 👤 Author
 
-## Author 
-Aryan 
+**Aryan**
+
+---
+*Built with ❤️ using Python and Mistral AI.*
